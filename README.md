@@ -14,6 +14,7 @@ The image feeds contain an old version of this plugin (V1.0, FTP only). Our upda
 the image compiles it itself).
 
 📺 YouTube channel: **[SetTvBox4U – youtube.com/@SetTvBox4U](https://www.youtube.com/@SetTvBox4U)**
+🎬 Trailer (Vu+ Ultimo 4K, OpenBlackHole): [https://youtu.be/1WwbSd642tw](https://youtu.be/1WwbSd642tw) · full video guide for DreamOS: [https://youtu.be/0g_nDegcdgA](https://youtu.be/0g_nDegcdgA)
 📄 First use guide (PDF): [English](docs/RCSC-2.1.0_open-source_User-Guide_EN.pdf) · [Arabic – العربية](docs/RCSC-2.1.0_open-source_User-Guide_AR.pdf) · [Slovak – Slovensky](docs/RCSC-2.1.0_open-source_Navod_SK.pdf)
 📄 Old feed plugin vs. our update (PDF): [English](docs/RCSC-2.1.0_old-vs-new_OpenBH_EN.pdf) · [Arabic](docs/RCSC-2.1.0_old-vs-new_OpenBH_AR.pdf) · [Slovak](docs/RCSC-2.1.0_old-vs-new_OpenBH_SK.pdf)
 
