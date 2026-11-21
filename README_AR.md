@@ -2,6 +2,17 @@
 
 # Remote channel stream converter 2.1.0 لصور Enigma2 مفتوحة المصدر
 
+</div>
+
+> [!CAUTION]
+> **⚠️ We do not support illegal viewing, sharing or distribution of TV channels. This plugin and all our videos are for educational purposes only.**<br>
+> **⚠️ نحن لا ندعم المشاهدة أو المشاركة أو النشر غير القانوني للقنوات التلفزيونية. هذه الإضافة وجميع فيديوهاتنا لأغراض تعليمية فقط.**<br>
+> **⚠️ Nepodporujeme nelegálne sledovanie, zdieľanie ani šírenie TV kanálov. Plugin aj všetky naše videá slúžia len na vzdelávacie účely.**<br>
+> **⚠️ Wir unterstützen kein illegales Ansehen, Teilen oder Verbreiten von TV-Sendern. Dieses Plugin und alle unsere Videos dienen nur Lernzwecken.**<br>
+> **⚠️ Ní thacaímid le féachaint, comhroinnt ná scaipeadh mídhleathach cainéal teilifíse. Is chun críocha oideachais amháin atá an breiseán seo agus ár bhfíseáin go léir.**
+
+<div dir="rtl">
+
 🌐 [English](README.md) · **العربية** · [Slovensky (PDF)](docs/RCSC-2.1.0_open-source_Navod_SK.pdf) · [DreamOS](https://github.com/Mardo22/RemoteChannelStreamConverter-DreamOS)
 
 **شاهد قنوات جهاز استقبال آخر في شبكتك – مع الصور و EPG.** هذا تحديثنا لإضافة «Remote channel stream converter» لصور
@@ -13,18 +24,18 @@ Enigma2 مفتوحة المصدر مع Python 3 (المبنية على OE-Allian
 **الإصدار الحالي: 2.1.0** (11.11.2026) – حزمة واحدة لـ Python 3.13 و 3.14.
 
 📺 قناة YouTube: **[SetTvBox4U](https://www.youtube.com/@SetTvBox4U)**
-📄 دليل الاستخدام الأول (PDF): [العربية](docs/RCSC-2.1.0_open-source_User-Guide_AR.pdf) · [English](docs/RCSC-2.1.0_open-source_User-Guide_EN.pdf) · [Slovensky](docs/RCSC-2.1.0_open-source_Navod_SK.pdf)
+📄 دليل الاستخدام على Vu+ Ultimo 4K و OpenBH 6.0 (PDF): [العربية](docs/RCSC-2.1.0_open-source_User-Guide_AR.pdf) · [English](docs/RCSC-2.1.0_open-source_User-Guide_EN.pdf) · [Slovensky](docs/RCSC-2.1.0_open-source_Navod_SK.pdf)
 📄 الإضافة القديمة مقابل تحديثنا (PDF): [العربية](docs/RCSC-2.1.0_old-vs-new_OpenBH_AR.pdf) · [English](docs/RCSC-2.1.0_old-vs-new_OpenBH_EN.pdf)
 
-## صور الشاشة (OpenBH 5.6)
+## صور الشاشة (Vu+ Ultimo 4K، OpenBH 6.0)
 
 | نافذة الإضافة | إعدادات الخادم |
 |---|---|
 | ![](docs/images/01-main-window.jpg) | ![](docs/images/02-settings.jpg) |
 | **قائمة الخيارات (MENU)** | **الباقات المحوّلة** |
 | ![](docs/images/03-options-menu.jpg) | ![](docs/images/04-converted.jpg) |
-| **قائمة القنوات مع الصور و EPG** | **شريط المعلومات** |
-| ![](docs/images/05-channel-list.jpg) | ![](docs/images/06-infobar.jpg) |
+| **قائمة القنوات – بث من الخادم** | **حول الإضافة** |
+| ![](docs/images/05-channel-list.jpg) | ![](docs/images/06-about.jpg) |
 
 ## الجديد مقارنة بإضافة الخلاصة
 - اتصال عبر **OpenWebif بدون كلمة مرور** (و FTP مع كلمة مرور ما زال ممكناً).

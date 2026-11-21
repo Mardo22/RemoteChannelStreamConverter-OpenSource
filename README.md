@@ -1,5 +1,12 @@
 # Remote channel stream converter 2.1.0 for open-source Enigma2 images
 
+> [!CAUTION]
+> **⚠️ We do not support illegal viewing, sharing or distribution of TV channels. This plugin and all our videos are for educational purposes only.**<br>
+> **⚠️ نحن لا ندعم المشاهدة أو المشاركة أو النشر غير القانوني للقنوات التلفزيونية. هذه الإضافة وجميع فيديوهاتنا لأغراض تعليمية فقط.**<br>
+> **⚠️ Nepodporujeme nelegálne sledovanie, zdieľanie ani šírenie TV kanálov. Plugin aj všetky naše videá slúžia len na vzdelávacie účely.**<br>
+> **⚠️ Wir unterstützen kein illegales Ansehen, Teilen oder Verbreiten von TV-Sendern. Dieses Plugin und alle unsere Videos dienen nur Lernzwecken.**<br>
+> **⚠️ Ní thacaímid le féachaint, comhroinnt ná scaipeadh mídhleathach cainéal teilifíse. Is chun críocha oideachais amháin atá an breiseán seo agus ár bhfíseáin go léir.**
+
 🌐 **English** · [العربية – Arabic](README_AR.md) · [Slovensky (PDF)](docs/RCSC-2.1.0_open-source_Navod_SK.pdf)
 · DreamOS version: [RemoteChannelStreamConverter-DreamOS](https://github.com/Mardo22/RemoteChannelStreamConverter-DreamOS)
 
@@ -15,18 +22,18 @@ the image compiles it itself).
 
 📺 YouTube channel: **[SetTvBox4U – youtube.com/@SetTvBox4U](https://www.youtube.com/@SetTvBox4U)**
 🎬 Trailer (Vu+ Ultimo 4K, OpenBlackHole): [https://youtu.be/1WwbSd642tw](https://youtu.be/1WwbSd642tw) · full video guide for DreamOS: [https://youtu.be/0g_nDegcdgA](https://youtu.be/0g_nDegcdgA)
-📄 First use guide (PDF): [English](docs/RCSC-2.1.0_open-source_User-Guide_EN.pdf) · [Arabic – العربية](docs/RCSC-2.1.0_open-source_User-Guide_AR.pdf) · [Slovak – Slovensky](docs/RCSC-2.1.0_open-source_Navod_SK.pdf)
+📄 User guide on Vu+ Ultimo 4K / OpenBH 6.0 (PDF): [English](docs/RCSC-2.1.0_open-source_User-Guide_EN.pdf) · [Arabic – العربية](docs/RCSC-2.1.0_open-source_User-Guide_AR.pdf) · [Slovak – Slovensky](docs/RCSC-2.1.0_open-source_Navod_SK.pdf)
 📄 Old feed plugin vs. our update (PDF): [English](docs/RCSC-2.1.0_old-vs-new_OpenBH_EN.pdf) · [Arabic](docs/RCSC-2.1.0_old-vs-new_OpenBH_AR.pdf) · [Slovak](docs/RCSC-2.1.0_old-vs-new_OpenBH_SK.pdf)
 
-## Screenshots (OpenBH 5.6)
+## Screenshots (Vu+ Ultimo 4K, OpenBH 6.0)
 
 | Plugin window | Server settings |
 |---|---|
 | ![Main window](docs/images/01-main-window.jpg) | ![Settings](docs/images/02-settings.jpg) |
 | **Options (MENU)** | **Converted bouquets** |
 | ![Options](docs/images/03-options-menu.jpg) | ![Converted](docs/images/04-converted.jpg) |
-| **Channel list with picons and EPG** | **Infobar** |
-| ![Channel list](docs/images/05-channel-list.jpg) | ![Infobar](docs/images/06-infobar.jpg) |
+| **Channel list – stream from the server** | **About** |
+| ![Channel list](docs/images/05-channel-list.jpg) | ![About](docs/images/06-about.jpg) |
 
 ## What is new compared to the feed plugin
 - Connection over **OpenWebif without a password** (FTP with password still possible).
