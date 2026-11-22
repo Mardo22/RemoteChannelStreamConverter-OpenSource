@@ -2,6 +2,14 @@
 
 Updates by **Mardo22 (SetTvBox4U)**. Licensed under GPL-3.0. DreamOS history: [RemoteChannelStreamConverter-DreamOS](https://github.com/Mardo22/RemoteChannelStreamConverter-DreamOS/blob/main/CHANGELOG.md).
 
+## 2.1.1 – 22.11.2026
+- **Online update:** when the plugin is opened it asks GitHub for the latest published version. If it is newer, a
+  message shows what is new – **OK** downloads and installs it (opkg) and offers a GUI restart, **EXIT** keeps your
+  version. The download is checked (size and checksum) before it is installed. Nothing is installed without asking.
+  Option "Check for updates when opening" (default yes) and MENU "Check for updates now".
+- Settings and converted bouquets stay as they are – install 2.1.1 over 2.1.0.
+- Tested on Vu+ Ultimo 4K with OpenBH 6.0 (22.11.2026): update offered, downloaded, installed, GUI restarted.
+
 ## 2.1.0 – 11.11.2026
 - First version for open-source Enigma2 images with Python 3 (OE-Alliance based), built from our DreamOS version 2.0.2.
 - Package `enigma2-plugin-extensions-rcsc-settvbox4u` replaces the feed plugin `enigma2-plugin-extensions-remotechannelstreamconverter` (V1.0).

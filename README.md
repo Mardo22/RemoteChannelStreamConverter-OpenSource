@@ -1,4 +1,4 @@
-# Remote channel stream converter 2.1.0 for open-source Enigma2 images
+# Remote channel stream converter 2.1.1 for open-source Enigma2 images
 
 > [!CAUTION]
 > **⚠️ We do not support illegal viewing, sharing or distribution of TV channels. This plugin and all our videos are for educational purposes only.**<br>
@@ -17,7 +17,7 @@ satellite cable) into stream bouquets on this receiver. The channels then play t
 
 The image feeds contain an old version of this plugin (V1.0, FTP only). Our update replaces it.
 
-**Current version: 2.1.0** (11.11.2026) – one package for Python 3.13 and 3.14 (the package contains only source code,
+**Current version: 2.1.1** (22.11.2026) – one package for Python 3.13 and 3.14 (the package contains only source code,
 the image compiles it itself).
 
 📺 YouTube channel: **[SetTvBox4U – youtube.com/@SetTvBox4U](https://www.youtube.com/@SetTvBox4U)**
@@ -45,6 +45,8 @@ the image compiles it itself).
 - Picons: links for the converted channels and missing picons copied from the server.
 - EPG: mapping for EPGImport and EPG from the server on demand.
 - Current channel names from the server, Full HD window, title with the name of the image.
+- **Online update** (since 2.1.1): when the plugin is opened it checks GitHub for a new version – you decide with OK or EXIT
+  (option, MENU "Check for updates now").
 
 ## Tested
 | Image | Python | Receiver | Result |
@@ -57,11 +59,11 @@ the image compiles it itself).
 Server: Vu+ Ultimo 4K with OpenBh 6.0. Streams tested in 1920×1080 (Asia 13°E, Canal+ 23.5°E).
 
 ## Installation
-1. Copy `release/enigma2-plugin-extensions-rcsc-settvbox4u_2.1.0_all.ipk` to `/tmp` of the receiver.
+1. Copy `release/enigma2-plugin-extensions-rcsc-settvbox4u_2.1.1_all.ipk` to `/tmp` of the receiver.
 2. In telnet / SSH:
    ```sh
    opkg remove enigma2-plugin-extensions-remotechannelstreamconverter   # old feed plugin, if installed
-   opkg install /tmp/enigma2-plugin-extensions-rcsc-settvbox4u_2.1.0_all.ipk
+   opkg install /tmp/enigma2-plugin-extensions-rcsc-settvbox4u_2.1.1_all.ipk
    ```
 3. Restart the GUI.
 
@@ -86,7 +88,7 @@ python build_ipk.py
 
 ## Credits
 - Original plugin "Remote channel stream converter" – OpenPLi, E2OpenPlugins, OE-Alliance (GPL-3.0).
-- Updates 1.1 – 2.1.0: **Mardo22 ([SetTvBox4U](https://www.youtube.com/@SetTvBox4U))**, 2026 – see [CHANGELOG.md](CHANGELOG.md).
+- Updates 1.1 – 2.1.1: **Mardo22 ([SetTvBox4U](https://www.youtube.com/@SetTvBox4U))**, 2026 – see [CHANGELOG.md](CHANGELOG.md).
 
 ## License
 GNU General Public License v3.0 – see [LICENSE](LICENSE).

@@ -1,6 +1,6 @@
 <div dir="rtl">
 
-# Remote channel stream converter 2.1.0 لصور Enigma2 مفتوحة المصدر
+# Remote channel stream converter 2.1.1 لصور Enigma2 مفتوحة المصدر
 
 </div>
 
@@ -21,7 +21,7 @@ Enigma2 مفتوحة المصدر مع Python 3 (المبنية على OE-Allian
 
 في فيد الصور نسخة قديمة من هذه الإضافة (V1.0، عبر FTP فقط). تحديثنا يحلّ محلها.
 
-**الإصدار الحالي: 2.1.0** (11.11.2026) – حزمة واحدة لـ Python 3.13 و 3.14.
+**الإصدار الحالي: 2.1.1** (22.11.2026) – حزمة واحدة لـ Python 3.13 و 3.14.
 
 📺 قناة YouTube: **[SetTvBox4U](https://www.youtube.com/@SetTvBox4U)**
 📄 دليل الاستخدام على Vu+ Ultimo 4K و OpenBH 6.0 (PDF): [العربية](docs/RCSC-2.1.0_open-source_User-Guide_AR.pdf) · [English](docs/RCSC-2.1.0_open-source_User-Guide_EN.pdf) · [Slovensky](docs/RCSC-2.1.0_open-source_Navod_SK.pdf)
@@ -46,6 +46,7 @@ Enigma2 مفتوحة المصدر مع Python 3 (المبنية على OE-Allian
 - قنوات IPTV من الخادم تُنسخ مع روابطها، وقنوات StreamRelay تعمل على المنفذ 17999.
 - الصور: روابط للقنوات المحوّلة ونسخ الصور الناقصة من الخادم.
 - EPG: ربط مع EPGImport و EPG من الخادم عند الطلب.
+- **التحديث عبر الإنترنت** (من الإصدار 2.1.1): عند فتح البلجن يبحث في GitHub عن إصدار جديد – وأنت تقرر بزر OK أو EXIT (خيار، و MENU – Check for updates now).
 
 ## تم الاختبار
 | الصورة | Python | الجهاز | النتيجة |
@@ -58,14 +59,14 @@ Enigma2 مفتوحة المصدر مع Python 3 (المبنية على OE-Allian
 الخادم: Vu+ Ultimo 4K مع OpenBh 6.0. البث بدقة 1920×1080.
 
 ## التثبيت
-1. انسخ الملف `release/enigma2-plugin-extensions-rcsc-settvbox4u_2.1.0_all.ipk` إلى `/tmp` في الجهاز.
+1. انسخ الملف `release/enigma2-plugin-extensions-rcsc-settvbox4u_2.1.1_all.ipk` إلى `/tmp` في الجهاز.
 2. عبر telnet أو SSH:
 
 </div>
 
 ```sh
 opkg remove enigma2-plugin-extensions-remotechannelstreamconverter
-opkg install /tmp/enigma2-plugin-extensions-rcsc-settvbox4u_2.1.0_all.ipk
+opkg install /tmp/enigma2-plugin-extensions-rcsc-settvbox4u_2.1.1_all.ipk
 ```
 
 <div dir="rtl">
