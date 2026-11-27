@@ -20,6 +20,10 @@
 # 2.1.1 (22.11.2026): online update from GitHub - when the plugin is opened it asks GitHub for the latest
 #      published release; if it is newer, OK downloads and installs it (opkg install) and offers a GUI restart.
 #      Option "Check for updates when opening" and MENU "Check for updates now".
+# 2.1.2 (27.11.2026): the EPG of the server is imported about 1 minute after Convert / Update all (timer in the
+#      main thread, also when the window is closed) and never while enigma2 is still saving its EPG or EPGImport
+#      is running (then 30 s later, max. 10 times) - before EPGImport started at once and could hang enigma2.
+#      No import of only the server EPG when EPGImport is set to clear the whole EPG before each import.
 # Earlier versions (DreamOS 4.5 and 5.0, one package, the system was detected at runtime):
 # Based on the OpenPLi plugin "Remote channel stream converter" (GPL).
 # 1.1: Full HD screen in the style of the DreamOS skin, menu in Service Searching (like "Tuners & Scanning"
@@ -81,8 +85,8 @@ from .FTPDownloader import FTPDownloader
 from . import epgmap
 from . import updater
 
-VERSION = "2.1.1"
-VERSION_DATE = "22.11.2026"
+VERSION = "2.1.2"
+VERSION_DATE = "27.11.2026"
 UPDATED_SINCE = "21.10.2026"
 UPDATED_BY = "Mardo22"
 YOUTUBE = "youtube.com/@SetTvBox4U"
@@ -1134,9 +1138,20 @@ def startEpgImportAll():
 		return False
 
 
+def epgImportClearsAll():
+	"""EPGImport option "Clearing current EPG before import": every import starts with an empty EPG"""
+	try:
+		return bool(config.plugins.epgimport.clear_oldepg.value)
+	except Exception:
+		return False
+
+
 def startEpgImportOfServer():
 	"""imports only the source "RCSC - EPG from server" with EPGImport (like its own import) - main thread"""
 	if not os.path.exists(epgmap.SERVER_SOURCES):
+		return False
+	if epgImportClearsAll():
+		print("[RCSC] EPG of the server not imported - EPGImport clears the whole EPG before each import")
 		return False
 	try:
 		from Plugins.Extensions.EPGImport import plugin as epi
@@ -1152,6 +1167,80 @@ def startEpgImportOfServer():
 	except Exception as e:
 		print("[RCSC] EPGImport start failed:", e)
 		return False
+
+
+# ---- 2.0.5 / 2.1.2: EPGImport later, in the main thread, never while enigma2 saves its EPG
+EPG_IMPORT_DELAY = 60	# seconds after Convert / Update all
+EPG_RETRY_DELAY = 30	# seconds between the checks while the EPG is being saved
+EPG_RETRY_MAX = 10
+EPG_SAVE_QUIET = 20	# the EPG file of enigma2 must be unchanged for so many seconds
+_epgTimer = {}
+
+
+def epgCacheFiles():
+	files = []
+	try:
+		fn = config.misc.epgcache_filename.value
+		if fn:
+			files.append(fn)
+	except Exception:
+		pass
+	for fn in ("/etc/enigma2/epg.db", "/data/epg/epg.db", "/media/hdd/epg.db", "/etc/enigma2/epg.dat",
+			"/media/hdd/epg.dat", "/media/usb/epg.dat"):
+		if fn not in files:
+			files.append(fn)
+	return files
+
+
+def epgSaving():
+	"""True while enigma2 still writes its EPG file (changed less than EPG_SAVE_QUIET seconds ago)"""
+	now = time.time()
+	for fn in epgCacheFiles():
+		for f in (fn, fn + "-journal", fn + "-wal"):
+			try:
+				if 0 <= now - os.path.getmtime(f) < EPG_SAVE_QUIET:
+					return True
+			except OSError:
+				pass
+	return False
+
+
+def epgImportRunning():
+	try:
+		from Plugins.Extensions.EPGImport import plugin as epi
+		return bool(epi.epgimport.isImportRunning())
+	except Exception:
+		return False
+
+
+def epgImportBusy():
+	return epgImportRunning() or epgSaving()
+
+
+def scheduleEpgImport(func, delay, name="server"):
+	"""runs func (startEpgImportOfServer / startEpgImportAll) after delay seconds in the main thread (reactor timer,
+	also when the plugin window is closed); while the EPG is saved or EPGImport runs: again EPG_RETRY_DELAY later"""
+	from twisted.internet import reactor
+	old = _epgTimer.get(name)
+	if old is not None and old.active():
+		old.cancel()
+	_epgTimer[name] = reactor.callLater(delay, _epgImportTry, func, name, 1)
+
+
+def _epgImportTry(func, name, attempt):
+	from twisted.internet import reactor
+	_epgTimer.pop(name, None)
+	if epgImportBusy():
+		if attempt >= EPG_RETRY_MAX:
+			print("[RCSC] EPGImport (%s) not started - enigma2 still saves the EPG or EPGImport is running" % name)
+			return
+		print("[RCSC] EPG is being saved or imported - EPGImport (%s) in %d s (try %d)" % (name, EPG_RETRY_DELAY, attempt))
+		_epgTimer[name] = reactor.callLater(EPG_RETRY_DELAY, _epgImportTry, func, name, attempt + 1)
+		return
+	if func():
+		print("[RCSC] EPGImport (%s) started" % name)
+	else:
+		print("[RCSC] EPGImport (%s) could not be started" % name)
 
 
 def reloadEnigmaLists(services=True):
@@ -1625,7 +1714,10 @@ class RCSCMain(Screen):
 		elif action == "epg":
 			self.startEpg()
 		elif action == "epgimport":
-			if startEpgImportAll():
+			if epgImportBusy():
+				scheduleEpgImport(startEpgImportAll, EPG_RETRY_DELAY, "all")
+				self["status"].setText(_("The EPG is being saved now - EPGImport starts as soon as it is finished."))
+			elif startEpgImportAll():
 				self["status"].setText(_("EPGImport is running - EPG comes in a few minutes."))
 			else:
 				self["status"].setText(_("EPGImport could not be started (not installed or already running)."))
@@ -1748,7 +1840,12 @@ class RCSCMain(Screen):
 		self.working = False
 		text = epgText(epg)
 		if (epg.get("server") or {}).get("events"):
-			if startEpgImportOfServer():
+			if epgImportClearsAll():
+				text += "\n" + _("EPG of the server not imported: EPGImport is set to clear the whole EPG before each import (EPGImport settings).")
+			elif epgImportBusy():
+				scheduleEpgImport(startEpgImportOfServer, EPG_RETRY_DELAY)
+				text += "\n" + _("The EPG is being saved now - EPGImport imports the EPG of the server as soon as it is finished.")
+			elif startEpgImportOfServer():
 				text += "\n" + _("EPGImport is importing the EPG of the server now.")
 		self["status"].setText(_("EPG updated."))
 		self.session.open(MessageBox, text or _("EPG options are off (settings)."), MessageBox.TYPE_INFO, timeout=10)
@@ -1822,8 +1919,11 @@ class RCSCMain(Screen):
 		if etxt:
 			text += "\n" + etxt
 		if (result.get("epg") or {}).get("server", {}) and result["epg"]["server"].get("events"):
-			if startEpgImportOfServer():
-				text += "\n" + _("EPGImport is importing the EPG of the server now.")
+			if epgImportClearsAll():
+				text += "\n" + _("EPG of the server not imported: EPGImport is set to clear the whole EPG before each import (EPGImport settings).")
+			else:
+				scheduleEpgImport(startEpgImportOfServer, EPG_IMPORT_DELAY)
+				text += "\n" + _("The EPG of the server will be imported in about 1 minute.")
 		elif cfg.epg_server.value and not self._serverEpg:
 			text += "\n" + _("EPG from server: MENU - Update EPG from server")
 		if self._backupName:

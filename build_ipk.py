@@ -1,9 +1,9 @@
-# Build the opkg package (ipk) for open-source Enigma2 images: python build_ipk.py  -> enigma2-plugin-extensions-rcsc-settvbox4u_2.1.1_all.ipk
+# Build the opkg package (ipk) for open-source Enigma2 images: python build_ipk.py  -> enigma2-plugin-extensions-rcsc-settvbox4u_2.1.2_all.ipk
 import os, io, tarfile, time
 HERE = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(HERE, "src", "RemoteChannelStreamConverter")
 PKG = "enigma2-plugin-extensions-rcsc-settvbox4u"
-VER = "2.1.1"
+VER = "2.1.2"
 DEST = "./usr/lib/enigma2/python/Plugins/Extensions/RemoteChannelStreamConverter"
 CONTROL = """Package: %s
 Version: %s

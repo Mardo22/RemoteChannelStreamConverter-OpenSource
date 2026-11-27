@@ -17,6 +17,10 @@ from Components.config import config
 
 TRANSLATIONS = {
 	"sk": {
+		"EPG of the server not imported: EPGImport is set to clear the whole EPG before each import (EPGImport settings).": "EPG zo servera sa neimportuje: EPGImport má nastavené mazanie celého EPG pred každým importom (nastavenia EPGImport).",
+		"The EPG of the server will be imported in about 1 minute.": "EPG zo servera sa začne importovať asi o 1 minútu.",
+		"The EPG is being saved now - EPGImport starts as soon as it is finished.": "EPG sa práve ukladá – EPGImport sa spustí hneď, ako sa uloženie skončí.",
+		"The EPG is being saved now - EPGImport imports the EPG of the server as soon as it is finished.": "EPG sa práve ukladá – EPGImport naimportuje EPG zo servera hneď, ako sa uloženie skončí.",
 		"Check for updates now": "Skontrolovať aktualizácie teraz",
 		"Checking for updates ...": "Hľadám aktualizácie ...",
 		"Could not check for updates (no internet connection?).": "Aktualizácie sa nedali skontrolovať (bez internetu?).",
@@ -161,6 +165,10 @@ TRANSLATIONS = {
 		"The menu entries change after a GUI restart.": "Položky v menu sa zmenia po reštarte GUI.",
 	},
 	"cs": {
+		"EPG of the server not imported: EPGImport is set to clear the whole EPG before each import (EPGImport settings).": "EPG ze serveru se neimportuje: EPGImport má nastavené mazání celého EPG před každým importem (nastavení EPGImport).",
+		"The EPG of the server will be imported in about 1 minute.": "EPG ze serveru se začne importovat asi za 1 minutu.",
+		"The EPG is being saved now - EPGImport starts as soon as it is finished.": "EPG se právě ukládá – EPGImport se spustí hned, jak ukládání skončí.",
+		"The EPG is being saved now - EPGImport imports the EPG of the server as soon as it is finished.": "EPG se právě ukládá – EPGImport naimportuje EPG ze serveru hned, jak ukládání skončí.",
 		"Check for updates now": "Zkontrolovat aktualizace nyní",
 		"Checking for updates ...": "Hledám aktualizace ...",
 		"Could not check for updates (no internet connection?).": "Aktualizace nelze zkontrolovat (bez internetu?).",

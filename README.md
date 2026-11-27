@@ -1,4 +1,4 @@
-# Remote channel stream converter 2.1.1 for open-source Enigma2 images
+# Remote channel stream converter 2.1.2 for open-source Enigma2 images
 
 > [!CAUTION]
 > **⚠️ We do not support illegal viewing, sharing or distribution of TV channels. This plugin and all our videos are for educational purposes only.**<br>
@@ -17,7 +17,7 @@ satellite cable) into stream bouquets on this receiver. The channels then play t
 
 The image feeds contain an old version of this plugin (V1.0, FTP only). Our update replaces it.
 
-**Current version: 2.1.1** (22.11.2026) – one package for Python 3.13 and 3.14 (the package contains only source code,
+**Current version: 2.1.2** (27.11.2026) – one package for Python 3.13 and 3.14 (the package contains only source code,
 the image compiles it itself).
 
 📺 YouTube channel: **[SetTvBox4U – youtube.com/@SetTvBox4U](https://www.youtube.com/@SetTvBox4U)**
@@ -59,11 +59,11 @@ the image compiles it itself).
 Server: Vu+ Ultimo 4K with OpenBh 6.0. Streams tested in 1920×1080 (Asia 13°E, Canal+ 23.5°E).
 
 ## Installation
-1. Copy `release/enigma2-plugin-extensions-rcsc-settvbox4u_2.1.1_all.ipk` to `/tmp` of the receiver.
+1. Copy `release/enigma2-plugin-extensions-rcsc-settvbox4u_2.1.2_all.ipk` to `/tmp` of the receiver.
 2. In telnet / SSH:
    ```sh
    opkg remove enigma2-plugin-extensions-remotechannelstreamconverter   # old feed plugin, if installed
-   opkg install /tmp/enigma2-plugin-extensions-rcsc-settvbox4u_2.1.1_all.ipk
+   opkg install /tmp/enigma2-plugin-extensions-rcsc-settvbox4u_2.1.2_all.ipk
    ```
 3. Restart the GUI.
 
